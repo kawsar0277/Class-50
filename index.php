@@ -33,21 +33,7 @@ include 'config.php';
                             <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">Link</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="index.php">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="index.php">Something else here</a></li>
-                            </ul>
+                            <a class="nav-link" href="creat.php">Link</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" aria-disabled="true">Disabled</a>
@@ -71,12 +57,14 @@ include 'config.php';
                     <th scope="col">Email</th>
                     <th scope="col">Address</th>
                     <th scope="col">Blood_Group</th>
+                    <th scope="col">Action</th>
+                    
                 </tr>
             </thead>
             <tbody>
 
                 <?php
-                $query = 'SELECT * FROM student';
+                $query = 'SELECT * FROM students_1';
                 $students = mysqli_query($connection, $query);
 
                 $i = 1;
@@ -91,6 +79,7 @@ include 'config.php';
                     $email = $row['email'];
                     $address = $row['address'];
                     $blood = $row['blood_group'];
+                    
 
                     echo '<tr>
                     <th scope="row">' . $i . '</th>
@@ -101,6 +90,12 @@ include 'config.php';
                     <td>' . $email . '</td>
                     <td>' . $address . '</td>
                     <td>' . $blood . '</td>
+                    <td>
+                    <a href="edit.php?id='.$id.'" class="btn btn-primary">Edit</a>
+                    <a href="delete.php?id='.$id.'" class="btn btn-danger">Delete</a>
+
+                    </td>
+
                     </tr>';
 
                     $i++;
